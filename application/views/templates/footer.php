@@ -39,7 +39,7 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">
                     Batal
                 </button>
-                <a class="btn btn-success" href="login.html">Logout</a>
+                <a class="btn btn-success" href="<?= base_url('logout') ?>">Logout</a>
             </div>
         </div>
     </div>

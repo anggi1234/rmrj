@@ -3,22 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_user extends CI_Model
 {
-    public function get($table)
+    public function getUser()
     {
-        return $this->db->get($table)->result();
-    }
-
-    public function get_where($table, $where = [], $no_result = false)
-    {
-        $query = $this->db->get_where($table, $where);
-        if ($no_result) {
-            return $query;
-        } else {
-            if ($query->num_rows() > 1) {
-                return $query->result();
-            } else {
-                return $query->row();
-            }
-        }
+        $current_user = $this->session->userdata('user')->idUser;
+        $this->db->where_not_in('idUser', [1, $current_user]);
+        return $this->db->get('user')->result();
     }
 }
